@@ -7,25 +7,27 @@ export default (path) => {
 	// googleData : object to be returned, containing aggregated data from google platform.
 	let googleData = {};
 	
-	// saved places from google maps
-	const getPlaces = () => {
-		// Fetch raw data from places json
-		const placeJson = fs.readFileSync(`${path}/Maps (your places)/Saved Places.json`, "utf8");
+	// Google maps places
 
-		// Parse json to object
-		const places = JSON.parse(placeJson);
-		
-		return places.features;
-	}
-	console.log(getPlaces())
+	const mapsAndLocation = () => {
+		googleData.mapsAndLocations = {
+			places: getPlaces(),
+			locations: getLocations(),
+		}
+		function getPlaces(){
+			// Fetch raw data from places json
+			const places = jsonToObject(`${path}/Maps (your places)/Saved Places.json`);
 	
-
-	// Location data (tracking)
-	const getLocations = () => {
-		const locationsJson = fs.readFileSync(`${path}/Location History/Location History.json`, "utf8");
-		const locations = JSON.parse(locationsJson);
-
-		return locations.locations;
+			
+			return places.features;
+		}
+	
+		// Location data (tracking)
+		function getLocations(){
+			const locations = jsonToObject(`${path}/Location History/Location History.json`);
+	
+			return locations.locations;
+		}
 	}
-	csvToObject(`${path}/Google Shopping/Addresses/Addresses.txt`);
+
 }

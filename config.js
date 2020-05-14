@@ -1,2 +1,2 @@
 //Local path for development. This isn't relevant in production
-export const basePath = "c:/your/downloaded/data/directory";
+export const basePath = "C:/Users/ianrf/Desktop/_PRIFINA/dev/myData";

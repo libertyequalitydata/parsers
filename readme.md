@@ -8,3 +8,4 @@ The purpose of this project is to automate the process of data aggregation and s
 - Google
 - Facebook
 - Amazon
+
