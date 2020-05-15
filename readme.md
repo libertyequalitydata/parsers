@@ -6,6 +6,9 @@ The purpose of this project is to automate the process of data aggregation and s
 
 ## Sources in progress:
 - Google
+    - Maps
+		    - Saved places
+				- Location history
 - Facebook
 - Amazon
 

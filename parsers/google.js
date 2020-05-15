@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { csvToObject, jsonToObject } from '../util/file-conversion';
+import { csvToObject, jsonToObject, vcfToObj } from '../util/file-conversion';
 // Convert google data files to js objects
 export default (path) => {
 	// path : google takeout root path on filesystem
@@ -14,6 +14,7 @@ export default (path) => {
 			places: getPlaces(),
 			locations: getLocations(),
 		}
+		// Saved places from Google Maps
 		function getPlaces(){
 			// Fetch raw data from places json
 			const places = jsonToObject(`${path}/Maps (your places)/Saved Places.json`);
@@ -28,6 +29,16 @@ export default (path) => {
 	
 			return locations.locations;
 		}
+
 	}
+	const connections = () => {
+		getContacts();
+
+		// contacts
+		function getContacts(){
+			let contacts = vcfToObj(`${path}/Contacts/All Contacts/All Contacts.vcf`);
+		}
+	}
+	connections();
 
 }
