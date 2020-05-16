@@ -10,7 +10,7 @@ export default (path) => {
 	// Google maps places
 
 	const mapsAndLocation = () => {
-		googleData.mapsAndLocations = {
+		return {
 			places: getPlaces(),
 			locations: getLocations(),
 		}
@@ -32,13 +32,23 @@ export default (path) => {
 
 	}
 	const connections = () => {
-		getContacts();
-
+		return {
+			contacts: getContacts(),
+		}
 		// contacts
 		function getContacts(){
-			let contacts = vcfToObj(`${path}/Contacts/All Contacts/All Contacts.vcf`);
+			return vcfToObj(`${path}/Contacts/All Contacts/All Contacts.vcf`);
 		}
 	}
-	connections();
+	const browsers = () => {
+		return {
+			autofill: getAutofill(),
+		}
+		function getAutofill(){
+			const autoFill = jsonToObject(`${path}/Chrome/Autofill.json`)
+			return autoFill.Autofill;
+		}
+	}
+	browsers();
 
 }
