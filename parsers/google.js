@@ -43,10 +43,37 @@ export default (path) => {
 	const browsers = () => {
 		return {
 			autofill: getAutofill(),
+			history: getHistory(),
+
 		}
+		// chrome autofill data
 		function getAutofill(){
-			const autoFill = jsonToObject(`${path}/Chrome/Autofill.json`)
+			const autoFill = jsonToObject(`${path}/Chrome/Autofill.json`);
 			return autoFill.Autofill;
+		}
+
+		// Browser history
+		function getHistory(){
+			const history = jsonToObject(`${path}/Chrome/BrowserHistory.json`);
+			return history["Browser History"]
+		}
+
+		// Chrome Extensions
+		function getExtensions(){
+			const extensions = jsonToObject(`${path}/Chrome/Extensions.json`);
+			return extensions.Extensions;
+		}
+
+		// Search Engines
+		function getSearchEngines(){
+			const engines = jsonToObject(`${path}/Chrome/SearchEngines.json`);
+			return engines["Search Engines"];
+		}
+
+		// Chrome sync settings
+		function getSyncSettings(){
+			const syncs = jsonToObject(`${path}/Chrome/SyncSettings.json`);
+			return syncs;
 		}
 	}
 	browsers();
