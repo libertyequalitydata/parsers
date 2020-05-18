@@ -16,8 +16,9 @@ The purpose of this project is to automate the process of data aggregation and s
       - Search Engines
       - Sync Settings 
     - Finances
-		  - Google Pay transactions
-			- Google Play Purchases
+      - Google Pay transactions
+      - Google Play Purchases
+      - Purchases _ Reservations
 
 ## Sources Wanted:
 - Google

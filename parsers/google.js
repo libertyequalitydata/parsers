@@ -84,6 +84,7 @@ export default (path) => {
 		return {
 			payTransactions: getPayTransactions(),
 			playPurchases: getPlayPurchases(),
+			purchases_Reservations: getPurchasesReservations(),
 		}
 
 		function getPayTransactions(){
@@ -92,13 +93,11 @@ export default (path) => {
 			const dir = fs.readdirSync(payPath);
 			
 			const res = csvToObject(`${payPath}${dir[0]}`);
-			console.log(res)
 		}
 
 		// google play store purchases
 		function getPlayPurchases(){
 			const res = jsonToObject(`${path}/Google Play Store/Purchase History.json`)
-			console.log(res);
 			return res;
 		}
 
@@ -106,6 +105,18 @@ export default (path) => {
 		function getPlayOrderHistory(){
 			return jsonToObject(`${path}/Google Play Store/Order History.json`);
 		}
-	}
 
+		function getPurchasesReservations(){
+			const ordersPath = `${path}/Purchases _ Reservations`;
+			const orderNames = fs.readdirSync(ordersPath);
+
+			let res = new Array(orderNames.length);
+			for (let i = 0; i < orderNames.length; i++){
+				res += jsonToObject(`${ordersPath}/${orderNames[i]}`)
+			}
+			
+			return res;
+		}
+	}
+	finances()
 }
