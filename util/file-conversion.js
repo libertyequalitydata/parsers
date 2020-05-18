@@ -13,14 +13,45 @@ export const jsonToObject = (path) => {
 export const csvToObject = (path) => {
 	const csvString = fs.readFileSync(path,"utf8");
 	// split csv on line breaks
-	const csvArr = csvString.split("\n");
+	const csvArr = csvString.replace(/\r/g,"").split("\n");
 
 	// split on commas to keyPairArr
 	let keyPairArr = new Array(csvArr.length);
 	for (let i = 0; i < csvArr.length; i++){
-		keyPairArr[i] = csvArr[i].split(",")
+		keyPairArr[i] = csvArr[i].split(",");
+
+		// correct for defined strings ("")'s
+		for (let j = 0; j < keyPairArr[i].length; j++){
+			//check for opening parentheses
+			if (keyPairArr[i][j][0] == '"'){
+				// search for closing parentheses
+				let newString = "";
+				for (let k = j; k < keyPairArr[i].length; k++){
+					// stringify the array elements
+					newString += "," + keyPairArr[i][k];
+
+					// break out when closing paren is found
+					if (keyPairArr[i][k][keyPairArr[i][k].length - 1] == '"'){
+						// remove leading comma\
+						newString = newString.substr(1).replace(/"/g,"");
+
+						keyPairArr[i].splice(j,k-j+1,newString);
+						break;
+					}
+				}
+			}
+		}
 	}
-	console.log(keyPairArr);
+	let entries = new Array(keyPairArr.length - 1)
+	for (let i = 1; i < keyPairArr.length; i++){
+		// match keys to values
+		entries[i] = {};
+		for (let j = 0; j < keyPairArr[0].length; j++){
+			entries[i][keyPairArr[0][j]] = keyPairArr[i][j];
+		}
+	}
+
+	console.log(entries);
 }
 
 // vcf to js object

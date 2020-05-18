@@ -40,6 +40,8 @@ export default (path) => {
 			return vcfToObj(`${path}/Contacts/All Contacts/All Contacts.vcf`);
 		}
 	}
+
+	// Mainly data from Google Chrome
 	const browsers = () => {
 		return {
 			autofill: getAutofill(),
@@ -76,6 +78,14 @@ export default (path) => {
 			return syncs;
 		}
 	}
-	browsers();
 
+	// Money
+	const finances = () => {
+
+		function getPayTransactions(){
+
+		}
+	}
+
+csvToObject(`${path}/Google Pay/Transactions made on google/transactions_406879379043.csv`)
 }
