@@ -8,9 +8,9 @@ The purpose of this project is to automate the process of data aggregation and s
       - Saved places
       - Location history
     - Connections
-		  - Contacts
+      - Contacts
     - Chrome
-		  - Autofill
+      - Autofill
       - history
       - Extensions
       - Search Engines
