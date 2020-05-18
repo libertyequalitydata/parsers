@@ -84,7 +84,8 @@ export default (path) => {
 		return {
 			payTransactions: getPayTransactions(),
 			playPurchases: getPlayPurchases(),
-			purchases_Reservations: getPurchasesReservations(),
+			purchasesReservations: getPurchasesReservations(),
+			shoppingLists: getShoppingLists(),
 		}
 
 		function getPayTransactions(){
@@ -114,7 +115,20 @@ export default (path) => {
 			for (let i = 0; i < orderNames.length; i++){
 				res += jsonToObject(`${ordersPath}/${orderNames[i]}`)
 			}
-			
+
+			return res;
+		}
+
+		function getShoppingLists(){
+			const listPath = `${path}/Shopping Lists`;
+			const lists = fs.readdirSync(listPath);
+
+			let res = new Array(lists.length);
+
+			for (let i = 0; i < lists.length; i++){
+				res += csvToObject(`${listPath}/${lists[i]}`);
+			}
+
 			return res;
 		}
 	}
