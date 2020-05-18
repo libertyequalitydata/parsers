@@ -17,11 +17,14 @@ The purpose of this project is to automate the process of data aggregation and s
       - Sync Settings 
     - Finances
 		  - Google Pay transactions
+			- Google Play Purchases
 
 ## Sources Wanted:
 - Google
     - Chrome
 		  - Bookmarks (html file)
+		- Finances
+			- Shopping > Orders (unknown text content, need sample)
 - Facebook
 - Amazon
 

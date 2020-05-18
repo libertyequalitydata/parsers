@@ -83,6 +83,7 @@ export default (path) => {
 	const finances = () => {
 		return {
 			payTransactions: getPayTransactions(),
+			playPurchases: getPlayPurchases(),
 		}
 
 		function getPayTransactions(){
@@ -92,6 +93,18 @@ export default (path) => {
 			
 			const res = csvToObject(`${payPath}${dir[0]}`);
 			console.log(res)
+		}
+
+		// google play store purchases
+		function getPlayPurchases(){
+			const res = jsonToObject(`${path}/Google Play Store/Purchase History.json`)
+			console.log(res);
+			return res;
+		}
+
+		// google play order history
+		function getPlayOrderHistory(){
+			return jsonToObject(`${path}/Google Play Store/Order History.json`);
 		}
 	}
 
