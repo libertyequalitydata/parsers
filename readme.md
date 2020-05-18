@@ -15,6 +15,8 @@ The purpose of this project is to automate the process of data aggregation and s
       - Extensions
       - Search Engines
       - Sync Settings 
+    - Finances
+		  - Google Pay transactions
 
 ## Sources Wanted:
 - Google

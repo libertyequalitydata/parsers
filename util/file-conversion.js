@@ -51,7 +51,7 @@ export const csvToObject = (path) => {
 		}
 	}
 
-	console.log(entries);
+	return entries;
 }
 
 // vcf to js object

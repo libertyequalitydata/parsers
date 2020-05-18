@@ -81,11 +81,18 @@ export default (path) => {
 
 	// Money
 	const finances = () => {
+		return {
+			payTransactions: getPayTransactions(),
+		}
 
 		function getPayTransactions(){
-
+			const payPath = `${path}/Google Pay/Transactions made on Google/`
+			// Search the directory, because the file name contains a timestamp
+			const dir = fs.readdirSync(payPath);
+			
+			const res = csvToObject(`${payPath}${dir[0]}`);
+			console.log(res)
 		}
 	}
 
-csvToObject(`${path}/Google Pay/Transactions made on google/transactions_406879379043.csv`)
 }
