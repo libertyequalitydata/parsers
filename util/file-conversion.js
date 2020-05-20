@@ -8,6 +8,15 @@ export const jsonToObject = (path) => {
 	return result;
 }
 
+// directory of json to objects
+export const jsonsToObject = (path) => {
+	const files = fs.readdirSync(path);
+	// object to return
+	let result = {};
+	files.forEach(file => {
+		result[file] = jsonToObject(`${path}/${file}`);
+	});
+}
 
 // csv to js object
 export const csvToObject = (path) => {
@@ -87,5 +96,5 @@ export const vcfToObj = (path) => {
 // MBOX (mailbox) files
 export const mboxToObject = (path) => {
 	const mboxString = fs.readFileSync(path,"utf8");
-	
+
 }
