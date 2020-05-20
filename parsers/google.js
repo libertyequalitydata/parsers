@@ -132,5 +132,33 @@ export default (path) => {
 			return res;
 		}
 	}
-	finances()
+
+	// Youtube data
+	const youtube = () => {
+		return {
+			subscriptions: getSubscriptions(),
+			music: getMusicLibrary(),
+			playlists: getPlaylists(),
+			
+		}
+
+		// Youtube subscriptions array
+		function getSubscriptions(){
+			const subscriptions = jsonToObject(`${path}/YouTube and YouTube Music/subscriptions/subscriptions.json`);
+			return subscriptions;
+		}
+
+		// YouTube Music Library (url, song title, album, artists)
+		function getMusicLibrary(){
+			const music = csvToObject(`${path}/YouTube and YouTube Music/music-library-songs/music-library-songs.csv`);
+			return music;
+		}
+
+		// all playlists
+		function getPlaylists(){
+			const playlists = jsonToObject(`${path}/YouTube and YouTube Music/playlists/all-playlists.json`);
+			return playlists;
+		}
+	}
+
 }

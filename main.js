@@ -1,4 +1,4 @@
 import google from './parsers/google';
-import { basePath } from './config'; // WARNING: dev only
+import { basePaths } from './config'; // WARNING: dev only
 
-google(`${basePath}/google/Takeout`);
+google(basePaths.google);

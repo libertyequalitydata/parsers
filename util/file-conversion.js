@@ -83,3 +83,9 @@ export const vcfToObj = (path) => {
 	return entries;
 
 }
+
+// MBOX (mailbox) files
+export const mboxToObject = (path) => {
+	const mboxString = fs.readFileSync(path,"utf8");
+	
+}
