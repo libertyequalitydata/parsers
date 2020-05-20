@@ -5,7 +5,13 @@ export default (path) => {
 	// path : google takeout root path on filesystem
 
 	// googleData : object to be returned, containing aggregated data from google platform.
-	let googleData = {};
+	return {
+		mapsAndLocation: mapsAndLocation(),
+		connections: connections(),
+		browsers: browsers(),
+		finances: finances(),
+		youtube: youtube(),
+	}
 	
 	// Google maps places
 
