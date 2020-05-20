@@ -32,6 +32,11 @@ The purpose of this project is to automate the process of data aggregation and s
       - View history
       - Visit history
       - Address books
+    - Ads and Businesses
+      - Ad interests
+      - Advertisers who uploaded your info in contact lists
+      - Advertiser interactions
+      - Off-Facebook activity
 
 ## Sources Wanted:
 - Google

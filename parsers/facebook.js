@@ -7,7 +7,8 @@ export default (path) => {
 	console.log(aboutYou())
 
 	return {
-
+		aboutYou: aboutYou(),
+		adsAndBusiness: adsAndBusiness(),
 	}
 
 	function aboutYou(){
@@ -55,6 +56,39 @@ export default (path) => {
 		function getAddressBooks(){
 			const addressBooks = jsonToObject(`${aboutPath}/your_address_books.json`);
 			return addressBooks.address_book;
+		}
+	}
+
+	function adsAndBusiness(){
+		const adsPath = `${path}/ads_and_businesses`;
+		return{
+			adsInterests: getAdsInterests(),
+			adListUploaders: getAdListUploaders(),
+			advertiserInteractions: getAdvertiserInteractions(),
+			offFacebookActivity: getOffFacebookActivity()
+		}
+
+		function getAdsInterests(){
+			const adsInterests = jsonToObject(`${adsPath}/ads_interests.json`);
+			return adsInterests;
+		}
+
+		// advertisers who've uploaded your data in contact lists
+		function getAdListUploaders(){
+			const uploaders = jsonToObject(`${adsPath}/advertisers_who_uploaded_a_contact_list_with_your_information.json`);
+			return uploaders.custom_audiences;
+		}
+
+		// advertisers you've interacted with
+		function getAdvertiserInteractions(){
+			const interactions = jsonToObject(`${adsPath}/advertisers_you've_interacted_with.json`);
+			return interactions.history;
+		}
+
+		// activity off facebook
+		function getOffFacebookActivity(){
+			const offFacebookActivity = jsonToObject(`${adsPath}/your_off-facebook_activity.json`);
+			return offFacebookActivity.off_facebook_activity;
 		}
 	}
 }
