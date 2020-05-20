@@ -24,6 +24,14 @@ The purpose of this project is to automate the process of data aggregation and s
       - Subscriptions
       - Music library
       - Playlists
+- Facebook
+    - About You
+      - Facial recognition
+      - Peer group
+      - Platform preferences
+      - View history
+      - Visit history
+      - Address books
 
 ## Sources Wanted:
 - Google

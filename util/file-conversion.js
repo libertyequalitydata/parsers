@@ -8,16 +8,6 @@ export const jsonToObject = (path) => {
 	return result;
 }
 
-// directory of json to objects
-export const jsonsToObject = (path) => {
-	const files = fs.readdirSync(path);
-	// object to return
-	let result = {};
-	files.forEach(file => {
-		result[file] = jsonToObject(`${path}/${file}`);
-	});
-}
-
 // csv to js object
 export const csvToObject = (path) => {
 	const csvString = fs.readFileSync(path,"utf8");
@@ -68,7 +58,6 @@ export const vcfToObj = (path) => {
 	const vcfString = fs.readFileSync(path,"utf8");
 	// split individual contacts
 	let vcfArray = vcfString.split(/BEGIN:VCARD/i);
-	console.log(vcfArray.length);
 
 	let vcfContactsArray = new Array(vcfArray.length);
 	let entries = new Array(vcfArray.length);
