@@ -9,7 +9,7 @@ export default (path) => {
 	
 	// Google maps places
 
-	const mapsAndLocation = () => {
+	function mapsAndLocation(){
 		return {
 			places: getPlaces(),
 			locations: getLocations(),
@@ -31,7 +31,7 @@ export default (path) => {
 		}
 
 	}
-	const connections = () => {
+	function connections(){
 		return {
 			contacts: getContacts(),
 		}
@@ -42,7 +42,7 @@ export default (path) => {
 	}
 
 	// Mainly data from Google Chrome
-	const browsers = () => {
+	function browsers(){
 		return {
 			autofill: getAutofill(),
 			history: getHistory(),
@@ -80,7 +80,7 @@ export default (path) => {
 	}
 
 	// Money
-	const finances = () => {
+	function finances(){
 		return {
 			payTransactions: getPayTransactions(),
 			playPurchases: getPlayPurchases(),
@@ -134,12 +134,12 @@ export default (path) => {
 	}
 
 	// Youtube data
-	const youtube = () => {
+	function youtube(){
 		return {
 			subscriptions: getSubscriptions(),
 			music: getMusicLibrary(),
 			playlists: getPlaylists(),
-			
+
 		}
 
 		// Youtube subscriptions array
