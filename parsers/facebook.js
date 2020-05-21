@@ -91,4 +91,28 @@ export default (path) => {
 			return offFacebookActivity.off_facebook_activity;
 		}
 	}
+
+	function postsAndComments(){
+
+		return {
+			profilePosts: getProfilePosts(),
+			comments: getComments(),
+			groupsPostsComments: getGroupsPostsComments(),
+		}
+
+		function getProfilePosts(){
+			const posts = jsonToObject(`${path}/posts/your_posts_1.json`);
+			return posts;
+		}
+
+		function getComments(){
+			const comments = jsonToObject(`${path}/comments/comments.json`);
+			return comments.comments;
+		}
+
+		function getGroupsPostsComments(){
+			const groupsPostsComments = jsonToObject(`${path}/your_posts_and_comments_in_groups.json`);
+			return groupsPostsComments;
+		}
+	}
 }

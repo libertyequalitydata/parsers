@@ -37,7 +37,12 @@ The purpose of this project is to automate the process of data aggregation and s
       - Advertisers who uploaded your info in contact lists
       - Advertiser interactions
       - Off-Facebook activity
-
+    - Apps and Websites (Connected to Facebook)
+    - Posts and Comments
+      - Profile / wall posts
+      - Comments
+      - Group posts/ Comments
+    
 ## Sources Wanted:
 - Google
     - Mail
