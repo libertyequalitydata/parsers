@@ -121,7 +121,7 @@ export default (path) => {
 		}
 
 		function getGroupsPostsComments(){
-			const groupsPostsComments = jsonToObject(`${path}/your_posts_and_comments_in_groups.json`);
+			const groupsPostsComments = jsonToObject(`${path}/groups/your_posts_and_comments_in_groups.json`);
 			return groupsPostsComments;
 		}
 	}
@@ -239,17 +239,17 @@ export default (path) => {
 		}
 
 		function getFacebookWatchTopics(){
-			topics = jsonToObject(`${recommendationPath}/facebook_watch_topics_for_recommendations.json`);
+			const topics = jsonToObject(`${recommendationPath}/facebook_watch_topics_for_recommendations.json`);
 			return topics.facebook_watch_topics;
 		}
 
 		function getNewsFeedTopics(){
-			topics = jsonToObject(`${recommendationPath}/news_feed_topics_for_recommendations.json`);
+			const topics = jsonToObject(`${recommendationPath}/news_feed_topics_for_recommendations.json`);
 			return topics.news_feed_topics;
 		}
 
 		function getNewsTopics(){
-			topics = jsonToObject(`${recommendationPath}/news_topics_for_recommendations.json`);
+			const topics = jsonToObject(`${recommendationPath}/news_topics_for_recommendations.json`);
 			return topics.news_topics;
 		}
 	}

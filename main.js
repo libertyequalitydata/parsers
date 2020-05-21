@@ -1,6 +1,17 @@
 import google from './parsers/google';
 import facebook from './parsers/facebook';
-import { basePaths } from './config'; // WARNING: dev only
+import fs from 'fs';
+import { basePaths, outputPath } from './config'; // WARNING: dev only
 
-google(basePaths.google);
-facebook(basePaths.facebook);
+const data = {
+	google: google(basePaths.google),
+	facebook: facebook(basePaths.facebook)
+}
+
+const jsonResult = JSON.stringify(data,null,4);
+
+// write out to json file for analysis
+fs.writeFile(outputPath, jsonResult, (err) => {
+	if (err) return console.log(err);
+	console.log(`Data saved to ${outputPath}`)
+})
