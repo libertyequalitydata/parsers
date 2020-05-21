@@ -26,6 +26,7 @@ The purpose of this project is to automate the process of data aggregation and s
       - Playlists
 - Facebook
     - About You
+      - Profile Info
       - Facial recognition
       - Peer group
       - Platform preferences
@@ -57,6 +58,14 @@ The purpose of this project is to automate the process of data aggregation and s
       - Groups
         - Your groups (admin rights)
         - Group memberships
+      - Liked pages
+    - Recommendation info
+      - Facebook watch
+      - News feed
+      - News
+
+      
+      ```
     
 ## Sources Wanted:
 - Google

@@ -4,7 +4,6 @@ import { jsonToObject } from '../util/file-conversion';
 // facebook data
 
 export default (path) => {
-	console.log(aboutYou())
 
 	return {
 		aboutYou: aboutYou(),
@@ -12,17 +11,25 @@ export default (path) => {
 		postsAndComments: postsAndComments(),
 		appsAndWebsites: appsAndWebsites(),
 		events: events(),
+		connections: connections(),
+		recommendationInfo: recommendationInfo(),
 	}
 
 	function aboutYou(){
 		const aboutPath = `${path}/about_you`;
 		return {
+			profileInfo: getProfileInfo(),
 			facialRecognition: getFacialRecognition(),
 			friendPeerGroup: getFriendPeerGroup(),
 			preferences: getPreferences(),
 			viewed: getViewed(),
 			visited: getVisited(),
 			addressBooks: getAddressBooks(),
+		}
+
+		function getProfileInfo(){
+			const profile = jsonToObject(`${path}/profile_information/profile_information.json`);
+			return profile.profile;
 		}
 
 		// Facial recognition data
@@ -152,7 +159,13 @@ export default (path) => {
 		return{
 			friends: getFriends(),
 			following: getFollowing(),
-			groups: getGroups()
+			groups: getGroups(),
+			likedPages: getLikedPages(),
+		}
+		
+		function getLikedPages(){
+			const pages = jsonToObject(`${path}/likes_and_reactions/pages.json`);
+			return pages.page_likes;
 		}
 
 		function getFriends(){
@@ -215,4 +228,31 @@ export default (path) => {
 			}
 		}
 	}
+
+	// observed user interests
+	function recommendationInfo(){
+		const recommendationPath = `${path}/information_used_for_recommendations`;
+		return {
+			facebookWatchTopics: getFacebookWatchTopics(),
+			newsFeedTopics: getNewsFeedTopics(),
+			newsTopics: getNewsTopics(),
+		}
+
+		function getFacebookWatchTopics(){
+			topics = jsonToObject(`${recommendationPath}/facebook_watch_topics_for_recommendations.json`);
+			return topics.facebook_watch_topics;
+		}
+
+		function getNewsFeedTopics(){
+			topics = jsonToObject(`${recommendationPath}/news_feed_topics_for_recommendations.json`);
+			return topics.news_feed_topics;
+		}
+
+		function getNewsTopics(){
+			topics = jsonToObject(`${recommendationPath}/news_topics_for_recommendations.json`);
+			return topics.news_topics;
+		}
+	}
+
+
 }
