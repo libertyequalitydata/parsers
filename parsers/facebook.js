@@ -9,6 +9,9 @@ export default (path) => {
 	return {
 		aboutYou: aboutYou(),
 		adsAndBusiness: adsAndBusiness(),
+		postsAndComments: postsAndComments(),
+		appsAndWebsites: appsAndWebsites(),
+		events: events(),
 	}
 
 	function aboutYou(){
@@ -113,6 +116,35 @@ export default (path) => {
 		function getGroupsPostsComments(){
 			const groupsPostsComments = jsonToObject(`${path}/your_posts_and_comments_in_groups.json`);
 			return groupsPostsComments;
+		}
+	}
+	// External apps and websites (connected to facebook)
+	function appsAndWebsites(){
+		const sites = jsonToObject(`${path}/apps_and_websites/apps_and_websites.json`);
+		return sites;
+	}
+
+	function events(){
+		const eventsPath = `${path}/events`;
+		return {
+			yourEvents: getYourEvents(),
+			eventInvites: getEventInvites(),
+			eventResponses: getEventResponses()
+		}
+
+		function getYourEvents(){
+			const yourEvents = jsonToObject(`${eventsPath}/your_events.json`);
+			return yourEvents.your_events;
+		}
+
+		function getEventInvites(){
+			const invites = jsonToObject(`${eventsPath}/event_invitations.json`);
+			return invites.events_invited;
+		}
+
+		function getEventResponses(){
+			const responses = jsonToObject(`${eventsPath}/your_event_responses.json`);
+			return responses.event_responses;
 		}
 	}
 }

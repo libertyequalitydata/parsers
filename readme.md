@@ -42,6 +42,10 @@ The purpose of this project is to automate the process of data aggregation and s
       - Profile / wall posts
       - Comments
       - Group posts/ Comments
+    - Events
+      - Your Events
+      - Event invitations
+      - Event responses
     
 ## Sources Wanted:
 - Google
