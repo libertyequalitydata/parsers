@@ -147,4 +147,72 @@ export default (path) => {
 			return responses.event_responses;
 		}
 	}
+
+	function connections(){
+		return{
+			friends: getFriends(),
+			following: getFollowing(),
+			groups: getGroups()
+		}
+
+		function getFriends(){
+			const friendsPath = `${path}/friends`;
+			return {
+				friends: getFriendsList(),
+				receivedRequests: getReceivedRequests(),
+				rejectedRequests: getRejectedRequests(),
+				sentRequests: getSentRequests(),
+				removedFriends: getRemovedFriends()
+			}
+
+			function getFriendsList(){
+				const friends = jsonToObject(`${friendsPath}/friends.json`);
+				return friends.friends;
+			}
+
+			function getReceivedRequests(){
+				const requests = jsonToObject(`${friendsPath}/received_friend_requests.json`);
+				return requests.received_requests;
+			}
+
+			function getRejectedRequests(){
+				const requests = jsonToObject(`${friendsPath}/rejected_friend_requests.json`);
+				return requests.rejected_requests;
+			}
+
+			function getSentRequests(){
+				const requests = jsonToObject(`${friendsPath}/sent_friend_requests.json`);
+				return requests.sent_requests;
+			}
+
+			function getRemovedFriends(){
+				const friends = jsonToObject(`${friendsPath}/removed_friends.json`);
+				return friends.deleted_friends;
+			}
+		}
+
+		function getFollowing(){
+			const following = jsonToObject(`${path}/following_and_followers/following.json`);
+			return following.following;
+		}
+
+		function getGroups(){
+			const groupPath = `${path}/groups`;
+			return {
+				groupMemberships: getGroupMemberships(),
+				yourGroups: getYourGroups()
+			}
+
+			function getGroupMemberships(){
+				const groups = jsonToObject(`${groupPath}/your_group_membership_activity.json`);
+				return groups.groups_joined;
+			}
+
+			// groups where user is owner or admin
+			function getYourGroups(){
+				const groups = jsonToObject(`${groupPath}/your_groups.json`);
+				return groups;
+			}
+		}
+	}
 }
