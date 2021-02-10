@@ -1,6 +1,10 @@
-# Prifina Aggregator
+# Parsers
 
-The purpose of this project is to automate the process of data aggregation and standardization from various sources.
+The purpose of this repo is to provide parsers and oragnizers to manage data from different sources. So far this project covers Google's TakeOut file and Facebooks data dump. 
+
+## Contributions
+
+Contributions welcome. More data sources, better parsers. You name it.
 
 
 ## Usage
